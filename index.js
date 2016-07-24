@@ -78,12 +78,12 @@ function checkData(data) {
 const nativeSendAuthRequest = wrapApi(WeiboAPI.login);
 const nativeSendMessageRequest = wrapApi(WeiboAPI.shareToWeibo);
 
-export function login(config={}) {
+export function weibo_login(config={}) {
     checkData(config)
     return Promise.all([waitForResponse('WBAuthorizeResponse'), nativeSendAuthRequest(config)]).then(v=>v[0]);
 }
 
-export function share(data) {
+export function weibo_share(data) {
     checkData(data)
     return Promise.all([waitForResponse('WBSendMessageToWeiboResponse'), nativeSendMessageRequest(data)]).then(v=>v[0]);
 }
